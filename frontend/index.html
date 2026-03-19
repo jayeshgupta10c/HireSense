@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="hireSenseApp">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HireSense AI — Resume Screening & Ranking</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/styles.css" />
+
+  <!-- AngularJS 1.8 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-route.min.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+<div class="app-shell">
+
+  <!-- ── Sidebar ───────────────────────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo">Hire<span>Sense</span></div>
+      <div class="brand-tagline">AI Resume Screener</div>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#!/upload"
+           ng-class="{ active: $root.activeTab === 'upload' }"
+           ng-click="$root.setTab('upload')">
+          <span class="nav-icon">📤</span> Upload Resumes
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#!/dashboard"
+           ng-class="{ active: $root.activeTab === 'dashboard' }"
+           ng-click="$root.setTab('dashboard')">
+          <span class="nav-icon">📊</span> Dashboard
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      HireSense AI v1.0<br>
+      Powered by TF-IDF · NLP
+    </div>
+  </aside>
+
+  <!-- ── Main Content ──────────────────────────────────────────────────────── -->
+  <main class="main-content">
+    <div ng-view></div>
+  </main>
+
+</div>
+
+<!-- ── Scripts (load order matters) ─────────────────────────────────────────── -->
+<!-- 1. API Service (sets window.ApiService) -->
+<script src="services/api.service.js"></script>
+
+<!-- 2. AngularJS App module -->
+<script src="app.js"></script>
+
+<!-- 3. Controllers -->
+<script src="controllers/upload.controller.js"></script>
+<script src="controllers/dashboard.controller.js"></script>
+</body>
+</html>

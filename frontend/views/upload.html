@@ -1,0 +1,75 @@
+<!-- views/upload.html -->
+<div class="page-upload">
+
+  <div class="page-header">
+    <h1 class="page-title">Upload Resumes</h1>
+    <p class="page-subtitle">Supports PDF and TXT formats. Batch upload enabled.</p>
+  </div>
+
+  <!-- Drop Zone -->
+  <div class="drop-zone"
+       ng-class="{ 'drag-active': dragOver }"
+       ng-drop="onDrop($event)"
+       ng-dragover="onDragOver($event)"
+       ng-dragleave="onDragLeave()">
+    <div class="drop-zone-inner">
+      <div class="drop-icon">📄</div>
+      <p class="drop-title">Drag & drop resumes here</p>
+      <p class="drop-sub">or</p>
+      <label class="btn btn-primary" for="resumeFileInput" style="cursor:pointer;">
+        Browse Files
+      </label>
+      <input id="resumeFileInput"
+             type="file"
+             multiple
+             accept=".pdf,.txt,.doc"
+             style="display:none"
+             hs-file-input>
+      <p class="drop-hint">PDF · TXT · DOC</p>
+    </div>
+  </div>
+
+  <!-- Queue -->
+  <div class="queue-section" ng-show="uploadQueue.length > 0">
+    <div class="queue-header">
+      <span class="queue-count">{{ uploadQueue.length }} file(s) queued</span>
+      <button class="btn btn-success" ng-click="uploadAll()" ng-disabled="uploading">
+        <span ng-show="!uploading">⬆ Upload All</span>
+        <span ng-show="uploading" class="spinner-text">Uploading…</span>
+      </button>
+    </div>
+
+    <ul class="file-list">
+      <li class="file-item" ng-repeat="file in uploadQueue">
+        <span class="file-icon">📎</span>
+        <span class="file-name">{{ file.name }}</span>
+        <span class="file-size">{{ formatSize(file.size) }}</span>
+        <button class="remove-btn" ng-click="removeFromQueue($index)" title="Remove">✕</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Results -->
+  <div class="results-section" ng-show="uploadResults.length > 0">
+    <h3 class="results-title">Upload Results</h3>
+    <ul class="results-list">
+      <li class="result-item"
+          ng-repeat="r in uploadResults"
+          ng-class="r.success ? 'result-success' : 'result-error'">
+        <span class="result-icon">{{ r.success ? '✅' : '❌' }}</span>
+        <span class="result-name">{{ r.name }}</span>
+        <span class="result-detail" ng-show="r.success">
+          {{ r.resume.word_count }} words · {{ r.resume.keywords.slice(0,5).join(', ') }}
+        </span>
+        <span class="result-detail" ng-show="!r.success">{{ r.error }}</span>
+      </li>
+    </ul>
+
+    <div class="go-dashboard-wrap">
+      <a href="#!/dashboard" class="btn btn-primary" ng-click="$root.setTab('dashboard')">
+        Go to Dashboard → Rank Candidates
+      </a>
+    </div>
+  </div>
+
+</div>

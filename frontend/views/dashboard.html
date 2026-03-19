@@ -1,0 +1,159 @@
+<!-- views/dashboard.html -->
+<div class="page-dashboard">
+
+  <div class="page-header">
+    <h1 class="page-title">Candidate Ranking Dashboard</h1>
+    <p class="page-subtitle">{{ resumeCount }} resume(s) in database</p>
+  </div>
+
+  <!-- Error Banner -->
+  <div class="error-banner" ng-show="errorMsg">
+    ⚠ {{ errorMsg }}
+    <button class="banner-close" ng-click="errorMsg=''">✕</button>
+  </div>
+
+  <!-- JD Input Card -->
+  <div class="card jd-card">
+    <h2 class="card-title">Job Description</h2>
+    <textarea class="jd-textarea"
+              ng-model="jobDescription"
+              placeholder="Paste the full job description here. Include required skills, experience, and responsibilities for best results…"
+              rows="6"></textarea>
+    <div class="jd-footer">
+      <span class="jd-hint">{{ wordCount }} words</span>
+      <button class="btn btn-primary btn-rank"
+              ng-click="rankCandidates()"
+              ng-disabled="loading">
+        <span ng-show="!loading">⚡ Rank Candidates</span>
+        <span ng-show="loading" class="loading-dots">Analyzing<span>.</span><span>.</span><span>.</span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Analytics Cards -->
+  <div class="stats-row" ng-show="rankingDone">
+    <div class="stat-card">
+      <div class="stat-value">{{ analytics.total }}</div>
+      <div class="stat-label">Total Candidates</div>
+    </div>
+    <div class="stat-card stat-highlight">
+      <div class="stat-value">{{ analytics.average_score }}</div>
+      <div class="stat-label">Avg Score</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">{{ analytics.max_score }}</div>
+      <div class="stat-label">Top Score</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value match-excellent">{{ analytics.match_levels.Excellent }}</div>
+      <div class="stat-label">Excellent Matches</div>
+    </div>
+  </div>
+
+  <!-- Top Candidate Banner -->
+  <div class="top-candidate-card" ng-show="rankingDone && analytics.top_candidate">
+    <div class="top-badge">🏆 Top Match</div>
+    <div class="top-name">{{ analytics.top_candidate.original_name }}</div>
+    <div class="top-score">{{ analytics.top_candidate.score }}%</div>
+    <div class="top-keywords">
+      <span class="keyword-chip" ng-repeat="kw in analytics.top_candidate.keywords.slice(0,8)">{{ kw }}</span>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="charts-row" ng-show="rankingDone">
+    <div class="card chart-card">
+      <canvas id="scoreChart"></canvas>
+    </div>
+    <div class="card chart-card">
+      <canvas id="levelChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Results Table -->
+  <div class="card table-card" ng-show="rankingDone">
+    <div class="table-header">
+      <h2 class="card-title">Ranked Candidates</h2>
+      <div class="table-controls">
+        <select class="filter-select" ng-model="filterLevel">
+          <option value="All">All Levels</option>
+          <option value="Excellent">Excellent</option>
+          <option value="Good">Good</option>
+          <option value="Fair">Fair</option>
+          <option value="Low">Low</option>
+        </select>
+      </div>
+    </div>
+
+    <table class="ranking-table">
+      <thead>
+        <tr>
+          <th ng-click="sortBy('rank')" class="sortable"># <span class="sort-arrow">↕</span></th>
+          <th ng-click="sortBy('original_name')" class="sortable">Candidate <span class="sort-arrow">↕</span></th>
+          <th ng-click="sortBy('score')" class="sortable">Score <span class="sort-arrow">↕</span></th>
+          <th>Match Level</th>
+          <th>Score Bar</th>
+          <th>Keywords</th>
+          <th>Words</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="candidate in filteredRanked() | orderBy:sortField:sortReverse"
+            ng-class="{ 'row-top': candidate.rank === 1 }">
+          <td class="rank-cell">
+            <span class="rank-badge" ng-class="candidate.rank <= 3 ? 'rank-top' : ''">
+              {{ candidate.rank === 1 ? '🥇' : candidate.rank === 2 ? '🥈' : candidate.rank === 3 ? '🥉' : '#' + candidate.rank }}
+            </span>
+          </td>
+          <td class="name-cell">{{ candidate.original_name }}</td>
+          <td class="score-cell">
+            <strong>{{ candidate.score }}%</strong>
+          </td>
+          <td>
+            <span class="badge" ng-class="levelClass(candidate.match_level)">
+              {{ candidate.match_level }}
+            </span>
+          </td>
+          <td class="bar-cell">
+            <div class="score-bar-bg">
+              <div class="score-bar-fill"
+                   ng-style="{ width: candidate.score + '%', background: scoreColor(candidate.score) }">
+              </div>
+            </div>
+          </td>
+          <td class="kw-cell">
+            <span class="keyword-chip-sm" ng-repeat="kw in candidate.keywords.slice(0,4)">{{ kw }}</span>
+          </td>
+          <td class="words-cell">{{ candidate.word_count }}</td>
+          <td>
+            <button class="btn-delete" ng-click="deleteResume(candidate._id)" title="Delete resume">🗑</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="no-results" ng-show="filteredRanked().length === 0">
+      No candidates match the selected filter.
+    </p>
+  </div>
+
+  <!-- Resumes Library (always visible) -->
+  <div class="card library-card">
+    <h2 class="card-title">Resume Library</h2>
+    <p class="no-resumes" ng-show="!resumes.length">
+      No resumes uploaded yet.
+      <a href="#!/upload" ng-click="$root.setTab('upload')">Upload now →</a>
+    </p>
+    <ul class="resume-list" ng-show="resumes.length">
+      <li class="resume-item" ng-repeat="r in resumes">
+        <span class="resume-icon">📄</span>
+        <span class="resume-name">{{ r.original_name }}</span>
+        <span class="resume-meta">{{ r.word_count }} words</span>
+        <span class="resume-type">{{ r.file_type.toUpperCase() }}</span>
+        <button class="btn-delete" ng-click="deleteResume(r._id)">🗑</button>
+      </li>
+    </ul>
+  </div>
+
+</div>
