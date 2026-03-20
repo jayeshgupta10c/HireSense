@@ -2,7 +2,7 @@
  * services/api.service.ts
  * Central AJAX service for all backend communication.
  */
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://hiresense-b2vw.onrender.com/api";
 // ── Low-level helpers ─────────────────────────────────────────────────────────
 function apiFetch(path, options = {}) {
     return fetch(`${API_BASE}${path}`, {
