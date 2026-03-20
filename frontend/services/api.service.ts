@@ -3,8 +3,7 @@
  * Central AJAX service for all backend communication.
  */
 
-const API_BASE = "http://localhost:5000/api";
-
+const API_BASE = "https://hiresense-b2vw.onrender.com/api";
 interface UploadResponse {
   message: string;
   resume: ResumeDoc;
