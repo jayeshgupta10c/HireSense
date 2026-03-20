@@ -13,16 +13,7 @@ def create_app() -> Flask:
     app = Flask(__name__)
 
     # Allow all origins during development
-    CORS(app, resources={
-    r"/api/*": {
-        "origins": [
-            "http://localhost:4200",
-            "http://localhost:4300",
-            "https://hiresense-frontend.onrender.com",
-            "*"
-        ]
-    }
-})
+    CORS(app) 
     # ── Test DB connection on startup ─────────────────────────────────────────
     try:
         from config.db import get_db
