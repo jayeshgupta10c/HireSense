@@ -12,7 +12,7 @@
 
 ## Live Demo
 
-- **Frontend:** https://hiresense-ai-b2z4.onrender.com/#!/dashboard
+- **Frontend:** https://hiresense-ai-b2z4.onrender.com
 - **Backend API:** https://hiresense-b2vw.onrender.com
 - **Health Check:** https://hiresense-b2vw.onrender.com/api/resumes/health
 
