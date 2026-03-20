@@ -1,0 +1,39 @@
+KARAN SINGH
+Fresher – Computer Science Graduate
+karan.singh@gmail.com | 8899001122 | Delhi
+
+OBJECTIVE
+Recently graduated student looking for entry level software developer job. I know basic
+programming in C, C++ and some Python. I am a quick learner and want to work in IT field.
+
+EDUCATION
+B.Sc Computer Science – Delhi University | 2020 – 2023 | 58%
+12th Standard – CBSE | 2020 | 62%
+
+SKILLS
+C programming, C++ basics, Python (basic), MS Office, Internet browsing, HTML basics
+
+MINI PROJECTS (College)
+Student Result Management System
+- Made in C++ as part of college assignment
+- Basic CRUD operations using file handling
+
+Simple Calculator in Python
+- Console-based calculator made in Python
+
+INTERNSHIP
+IT Support Intern – LocalBiz Solutions, Delhi (Summer 2022 – 1 month)
+- Helped with computer troubleshooting
+- Data entry work in Excel
+- Assisted senior staff with software installation
+
+EXTRACURRICULAR
+- College cricket team member
+- Participated in college tech fest
+
+LANGUAGES
+Hindi, English
+
+PERSONAL DETAILS
+Date of Birth: 15 March 2001
+Available to join immediately

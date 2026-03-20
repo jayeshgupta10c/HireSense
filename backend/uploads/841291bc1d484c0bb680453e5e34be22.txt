@@ -1,0 +1,93 @@
+ARJUN KRISHNAMURTHY
+Senior Software Engineer – Full Stack & Cloud
+arjun.k@email.com | +91-9845001122 | Bangalore | github.com/arjunkris | linkedin.com/in/arjunkris
+
+─────────────────────────────────────────────────────────────────
+PROFESSIONAL SUMMARY
+─────────────────────────────────────────────────────────────────
+Senior Full Stack Engineer with 7 years of experience building scalable distributed systems,
+microservices architectures, and cloud-native applications. Deep expertise in Python, Java,
+React, Node.js, AWS, Docker, and Kubernetes. Strong system design skills with experience
+handling 10M+ requests/day platforms. Passionate about clean code, TDD, and DevOps culture.
+Open-source contributor with 2,400+ GitHub stars across personal projects.
+
+─────────────────────────────────────────────────────────────────
+TECHNICAL SKILLS
+─────────────────────────────────────────────────────────────────
+Languages:       Python, Java, TypeScript, JavaScript, Go, SQL
+Frontend:        React.js, Next.js, Angular, Redux, HTML5, CSS3, Tailwind CSS
+Backend:         Node.js, Spring Boot, Flask, FastAPI, Django REST Framework
+Databases:       PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch, DynamoDB
+Cloud & DevOps:  AWS (EC2, S3, Lambda, RDS, ECS, CloudFormation), GCP, Docker, Kubernetes
+                 Terraform, CI/CD (Jenkins, GitHub Actions, GitLab CI), Ansible
+Architecture:    Microservices, REST APIs, GraphQL, Event-Driven (Kafka, RabbitMQ), gRPC
+Testing:         JUnit, PyTest, Jest, Cypress, Selenium, TDD, BDD
+Tools:           Git, Jira, Confluence, Postman, Datadog, Grafana, New Relic, SonarQube
+
+─────────────────────────────────────────────────────────────────
+PROFESSIONAL EXPERIENCE
+─────────────────────────────────────────────────────────────────
+
+SENIOR SOFTWARE ENGINEER
+Flipkart Internet Pvt. Ltd. | Bangalore | July 2020 – Present
+
+- Architected and built a real-time inventory management microservice handling 5M+ daily transactions
+- Led migration of monolithic Java app to 12 microservices on Kubernetes, reducing deployment time by 80%
+- Designed and implemented GraphQL API gateway serving 15+ downstream teams
+- Optimized PostgreSQL queries and Redis caching strategies, reducing p99 latency from 800ms to 90ms
+- Built CI/CD pipelines using GitHub Actions + ArgoCD for zero-downtime deployments
+- Mentored a team of 5 junior engineers through code reviews, design sessions, and pair programming
+- Drove adoption of TDD practices, increasing test coverage from 40% to 87% across services
+- Implemented distributed tracing with Jaeger and alerting with PagerDuty + Datadog
+- Collaborated with product managers and data scientists to deliver ML-powered recommendation features
+
+SOFTWARE ENGINEER
+Infosys Ltd. | Bangalore | August 2017 – June 2020
+
+- Developed RESTful APIs using Spring Boot for a banking application serving 2M+ customers
+- Built React.js frontend for customer-facing portal with 99.9% uptime SLA
+- Integrated third-party payment gateways (Razorpay, PayU) and built reconciliation service
+- Worked on AWS infrastructure setup: EC2, RDS, S3, VPC configuration
+- Participated in Agile sprints, daily standups, sprint planning, and retrospectives
+- Reduced build time by 60% by optimizing Maven dependencies and introducing parallel test execution
+- Wrote technical documentation for 20+ API endpoints and system architecture diagrams
+
+SOFTWARE ENGINEER INTERN
+Zoho Corporation | Chennai | January 2017 – July 2017
+
+- Built internal dashboard for CRM analytics using React and D3.js
+- Wrote Python scripts for data migration and validation (5M+ records)
+- Fixed 30+ bugs in production CRM codebase
+
+─────────────────────────────────────────────────────────────────
+EDUCATION
+─────────────────────────────────────────────────────────────────
+B.Tech – Computer Science & Engineering
+National Institute of Technology, Trichy | 2013 – 2017 | CGPA: 8.9/10
+
+─────────────────────────────────────────────────────────────────
+ACHIEVEMENTS & CERTIFICATIONS
+─────────────────────────────────────────────────────────────────
+- AWS Solutions Architect – Associate (SAA-C03)
+- AWS Developer – Associate
+- Google Cloud Professional Cloud Developer
+- Kubernetes (CKA) – Certified Kubernetes Administrator
+- Won internal Flipkart Hackathon 2021 (1st place, 200+ teams) – built fraud detection service
+- Speaker at PyCon India 2022: "Scaling Python Microservices with Kubernetes"
+- Open source: Contributor to FastAPI, 2.4k stars on personal async job queue library
+
+─────────────────────────────────────────────────────────────────
+PROJECTS
+─────────────────────────────────────────────────────────────────
+AsyncTaskQ (github.com/arjunkris/asynctaskq)
+- Distributed async task queue library in Python with Redis backend; 2,400+ GitHub stars
+- Used in production by 50+ companies
+
+RealTimeChat (github.com/arjunkris/rtchat)
+- WebSocket-based real-time chat system built with FastAPI, React, Redis Pub/Sub
+- Handles 50k concurrent connections
+
+─────────────────────────────────────────────────────────────────
+LANGUAGES
+─────────────────────────────────────────────────────────────────
+English (Fluent) | Tamil (Native) | Kannada (Conversational)
